@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
+const publicRoot = path.join(root, 'public');
 // Vercel function instances have a read-only project filesystem. /tmp works for
 // demo data during a warm instance; local runs use the project data directory.
 const dataDir = process.env.VERCEL ? path.join('/tmp', 'nexora-demo-data') : path.join(root, 'data');
@@ -80,7 +81,7 @@ export async function handler(req,res){
   if(route.startsWith('/api/'))return send(res,404,{error:'API route not found.'});
   if(route==='/')route='/index.html';
   if(['/testimonials','/app','/app/','/app/discover','/app/trending','/app/top-rated','/app/genres','/app/platforms','/app/watchlist','/app/account','/signin','/signup'].includes(route)||route.startsWith('/app/movie/'))route='/index.html';
-  const file=path.resolve(root,'.'+route);if(!file.startsWith(root+path.sep)||!existsSync(file))return send(res,404,{error:'Not found'});
+  const file=path.resolve(publicRoot,'.'+route);if(!file.startsWith(publicRoot+path.sep)||!existsSync(file))return send(res,404,{error:'Not found'});
   res.writeHead(200,{'content-type':mime[path.extname(file)]||'application/octet-stream','cache-control':'no-cache'});createReadStream(file).pipe(res);
 }
 await loadDb();
