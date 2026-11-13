@@ -7,11 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.resolve(root, '..');
-const publicRoot = path.join(projectRoot, 'public');
+const publicRoot = path.join(root, 'public');
 // Vercel function instances have a read-only project filesystem. /tmp works for
 // demo data during a warm instance; local runs use the project data directory.
-const dataDir = process.env.VERCEL ? path.join('/tmp', 'nexora-demo-data') : path.join(projectRoot, 'data');
+const dataDir = process.env.VERCEL ? path.join('/tmp', 'nexora-demo-data') : path.join(root, 'data');
 const dbPath = path.join(dataDir, 'nexora.json');
 const port = Number(process.env.PORT || 4173);
 const movieSeed = [
@@ -90,3 +89,5 @@ if (!process.env.VERCEL) {
   http.createServer((req,res)=>handler(req,res).catch(err=>{console.error(err);send(res,500,{error:'Something went wrong. Please try again.'});})).listen(port,()=>console.log(`Nexora is ready at http://localhost:${port}`));
 }
 
+
+export default handler;

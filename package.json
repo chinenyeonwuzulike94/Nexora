@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "scripts": { "start": "node lib/server.mjs", "dev": "node --watch lib/server.mjs" }
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs"
+  }
 }
-
