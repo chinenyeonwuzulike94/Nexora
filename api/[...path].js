@@ -1,4 +1,4 @@
-import { handler } from '../server.mjs';
+import { handler } from '../lib/server.mjs';
 
 export default handler;
 
