@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "functions": {
+    "api/[...path].js": { "maxDuration": 10 }
+  },
+  "rewrites": [
+    { "source": "/testimonials", "destination": "/index.html" },
+    { "source": "/app/:path*", "destination": "/index.html" },
+    { "source": "/signin", "destination": "/index.html" },
+    { "source": "/signup", "destination": "/index.html" }
+  ]
+}
+
