@@ -7,23 +7,22 @@ import { fileURLToPath } from 'node:url';
 import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const publicRoot = path.join(root, 'public');
 // Vercel function instances have a read-only project filesystem. /tmp works for
 // demo data during a warm instance; local runs use the project data directory.
 const dataDir = process.env.VERCEL ? path.join('/tmp', 'nexora-demo-data') : path.join(root, 'data');
 const dbPath = path.join(dataDir, 'nexora.json');
 const port = Number(process.env.PORT || 4173);
 const movieSeed = [
-  { id:'odyssey', title:'The Odyssey', year:2026, rating:'8.9', genre:'Adventure', type:'Movie', platform:'Cinemax', poster:'https://image.tmdb.org/t/p/w780/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', art:'linear-gradient(145deg,#1c3445,#c18957 48%,#090d12)', featured:true, description:'A legendary journey across a world of gods, monsters and impossible choices.' },
-  { id:'dune-two', title:'Dune: Part Two', year:2024, rating:'8.6', genre:'Sci-Fi', type:'Movie', platform:'Max', poster:'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', art:'linear-gradient(160deg,#c98139,#1e2940 52%,#0b1220)', description:'Paul Atreides joins the Fremen on a mythic journey toward justice and destiny.' },
-  { id:'oppenheimer', title:'Oppenheimer', year:2023, rating:'8.3', genre:'Drama', type:'Movie', platform:'Prime Video', poster:'https://image.tmdb.org/t/p/w500/ptpr0kGAckfQkJeJIt8st5dglvd.jpg', art:'linear-gradient(160deg,#e59230,#221717 70%)', description:'The story of the scientist whose work changed the course of history.' },
-  { id:'spiderverse', title:'Across the Spider-Verse', year:2023, rating:'8.6', genre:'Animation', type:'Movie', platform:'Netflix', poster:'https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg', art:'linear-gradient(145deg,#f03e86,#253887 55%,#101222)', description:'Miles Morales swings into a multiverse of heroes and hard choices.' },
-  { id:'batman', title:'The Batman', year:2022, rating:'7.8', genre:'Action', type:'Movie', platform:'Max', poster:'https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg', art:'linear-gradient(160deg,#91332e,#0c1824 68%)', description:'A young Batman follows a trail of clues through a rain-soaked Gotham.' },
-  { id:'moana-two', title:'Moana 2', year:2024, rating:'7.0', genre:'Adventure', type:'Movie', platform:'Disney+', poster:'https://image.tmdb.org/t/p/w500/5aQ5R8n7Y3G0F3Kf7Y2k3j7uPpY.jpg', art:'linear-gradient(160deg,#25a9a6,#f5a957 60%,#073e50)', description:'Moana answers a call from the ocean and sets sail beyond familiar waters.' },
+  { id:'odyssey', title:'The Odyssey', year:2026, rating:'8.9', genre:'Adventure', type:'Movie', platform:'Netflix', poster:'/assets/home-posters/the-odyssey.jpg', art:'linear-gradient(145deg,#1c3445,#c18957 48%,#090d12)', featured:true, description:'A hero. A mission. A journey beyond limits.' },
+  { id:'moana', title:'Moana', year:2026, rating:'8.7', genre:'Adventure', type:'Movie', platform:'Disney+', poster:'/assets/home-posters/moana.jpg', art:'linear-gradient(160deg,#25a9a6,#f5a957 60%,#073e50)', description:'A new ocean adventure awaits.' },
+  { id:'project-hail-mary', title:'Project Hail Mary', year:2026, rating:'8.8', genre:'Sci-Fi', type:'Movie', platform:'Prime Video', poster:'/assets/home-posters/project-hail-mary.jpg', art:'linear-gradient(160deg,#172a47,#0b1220)', description:'One astronaut. One impossible mission. A journey across the stars.' },
+  { id:'the-furious', title:'The Furious', year:2026, rating:'8.2', genre:'Action', type:'Movie', platform:'Netflix', poster:'/assets/home-posters/the-furious.jpg', art:'linear-gradient(160deg,#0b5964,#082033)', description:'A pulse-pounding new action story.' },
+  { id:'sheep-detectives', title:'The Sheep Detectives', year:2026, rating:'8.4', genre:'Comedy', type:'Movie', platform:'Hulu', poster:'/assets/home-posters/the-sheep-detectives.jpg', art:'linear-gradient(160deg,#7a9b3a,#293d25)', description:'A mystery unfolds in the most unexpected flock.' },
+  { id:'the-colony', title:'The Colony', year:2026, rating:'7.9', genre:'Sci-Fi', type:'Movie', platform:'Prime Video', poster:'https://image.tmdb.org/t/p/w500/ptpr0kGAckfQkJeJIt8st5dglvd.jpg', art:'linear-gradient(160deg,#1c3445,#101623)', description:'A story from a world on the edge.' },
   { id:'the-bear', title:'The Bear', year:2024, rating:'8.7', genre:'Drama', type:'TV Show', platform:'Hulu', poster:'https://image.tmdb.org/t/p/w500/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg', art:'linear-gradient(160deg,#d78b48,#45241b 70%)', description:'A chef returns home to run a family sandwich shop and finds a new team.' },
   { id:'arcane', title:'Arcane', year:2024, rating:'9.0', genre:'Animation', type:'TV Show', platform:'Netflix', poster:'https://image.tmdb.org/t/p/w500/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg', art:'linear-gradient(160deg,#35a1a4,#412246 72%)', description:'Two sisters find themselves on opposite sides of a growing conflict.' },
-  { id:'severance', title:'Severance', year:2025, rating:'8.7', genre:'Sci-Fi', type:'TV Show', platform:'Apple TV+', poster:'https://image.tmdb.org/t/p/w500/lFf6LLrQjYldcZItzOkGmMMigP7.jpg', art:'linear-gradient(160deg,#e9efe7,#275951 75%)', description:'Office workers undergo a procedure that divides their work and personal lives.' },
-  { id:'wicked', title:'Wicked', year:2024, rating:'7.6', genre:'Fantasy', type:'Movie', platform:'Peacock', poster:'https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg', art:'linear-gradient(160deg,#26a06f,#323d68 70%)', description:'Two unlikely friends discover who they are before the world names them.' },
+  { id:'severance', title:'Severance', year:2025, rating:'8.7', genre:'Sci-Fi', type:'TV Show', platform:'Prime Video', poster:'https://image.tmdb.org/t/p/w500/lFf6LLrQjYldcZItzOkGmMMigP7.jpg', art:'linear-gradient(160deg,#e9efe7,#275951 75%)', description:'Office workers undergo a procedure that divides their work and personal lives.' },
+  { id:'wicked', title:'Wicked', year:2024, rating:'7.6', genre:'Fantasy', type:'Movie', platform:'Hulu', poster:'https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg', art:'linear-gradient(160deg,#26a06f,#323d68 70%)', description:'Two unlikely friends discover who they are before the world names them.' },
   { id:'the-menu', title:'The Menu', year:2022, rating:'7.2', genre:'Thriller', type:'Movie', platform:'Hulu', poster:'https://image.tmdb.org/t/p/w500/fPtUgMcLIboqlTlPrq0bQpKK8eq.jpg', art:'linear-gradient(160deg,#b77043,#131a1c 70%)', description:'A couple visits an exclusive restaurant where the evening has a surprising menu.' },
   { id:'inside-out-two', title:'Inside Out 2', year:2024, rating:'7.6', genre:'Family', type:'Movie', platform:'Disney+', poster:'https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZVzLvDESb2QY.jpg', art:'linear-gradient(160deg,#ef784e,#7d56be 70%)', description:'Riley navigates new emotions as she grows into a new chapter of life.' }
 ];
@@ -81,13 +80,11 @@ export async function handler(req,res){
   if(route.startsWith('/api/'))return send(res,404,{error:'API route not found.'});
   if(route==='/')route='/index.html';
   if(['/testimonials','/app','/app/','/app/discover','/app/trending','/app/top-rated','/app/genres','/app/platforms','/app/watchlist','/app/account','/signin','/signup'].includes(route)||route.startsWith('/app/movie/'))route='/index.html';
-  const file=path.resolve(publicRoot,'.'+route);if(!file.startsWith(publicRoot+path.sep)||!existsSync(file))return send(res,404,{error:'Not found'});
+  if(!path.extname(route))route='/index.html';
+  const file=path.resolve(root,'.'+route);if(!file.startsWith(root+path.sep)||!existsSync(file))return send(res,404,{error:'Not found'});
   res.writeHead(200,{'content-type':mime[path.extname(file)]||'application/octet-stream','cache-control':'no-cache'});createReadStream(file).pipe(res);
 }
 await loadDb();
 if (!process.env.VERCEL) {
   http.createServer((req,res)=>handler(req,res).catch(err=>{console.error(err);send(res,500,{error:'Something went wrong. Please try again.'});})).listen(port,()=>console.log(`Nexora is ready at http://localhost:${port}`));
 }
-
-
-export default handler;
