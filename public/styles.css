@@ -530,4 +530,6 @@ body{background:var(--bg);color:var(--text)}
 :root[data-theme=dark] .password-toggle:hover{background:#c1a3e321;color:#d5b8ee}
 .hero{background-image:url("/assets/hero-art.jpg")!important}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none!important}.hero{background-image:url("/assets/hero-art.jpg")!important}}
+/* Keep the hero video visually continuous with the section below it. */
+.hero,.hero-stats,:root[data-theme=dark] .hero,:root[data-theme=dark] .hero-stats{box-shadow:none!important}
 
