@@ -1,4 +1,4 @@
-import { handler } from '../server.mjs';
+import { handler } from '../lib/server.mjs';
 
 export default async function apiHandler(req,res){
   try{return await handler(req,res)}
