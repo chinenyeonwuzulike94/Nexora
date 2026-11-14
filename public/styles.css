@@ -515,7 +515,7 @@ body{background:var(--bg);color:var(--text)}
 /* Auth artwork: cinematic HD backdrop, separate from the landing feature. */
 :root:not([data-theme=dark]) .auth-art{background-image:linear-gradient(90deg,transparent 68%,#f6f2eaa6 100%),linear-gradient(0deg,#f0ece4f0 0%,#f0ece455 50%,#f0ece422 100%),url("https://image.tmdb.org/t/p/w1280/uhUO7vQQKvCTfQWubOt5MAKokbL.jpg");background-size:cover;background-position:center 46%}
 :root[data-theme=dark] .auth-art{background-image:linear-gradient(90deg,transparent 68%,#191e29c4 100%),linear-gradient(0deg,#171c26f2 0%,#171c2678 54%,#171c263a 100%),url("https://image.tmdb.org/t/p/w1280/uhUO7vQQKvCTfQWubOt5MAKokbL.jpg");background-size:cover;background-position:center 46%}
-.hero-video{position:absolute;z-index:0;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 48%;filter:brightness(1.14) saturate(1.12) contrast(1.03)}
+.hero-video{position:absolute;z-index:0;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 48%;filter:brightness(1.22) saturate(1.15) contrast(1.04)}
 @media(max-width:720px){.hero-video{object-position:center center}}/* Keep the brand mark transparent and lift it on create-account artwork. */
 #app:has(form[data-register=true]) .auth-art{padding-top:clamp(16px,2vw,28px)}
 #app:has(form[data-register=true]) .auth-art-top{margin-top:-8px}
@@ -528,8 +528,8 @@ body{background:var(--bg);color:var(--text)}
 .password-toggle[aria-pressed=true] .password-eye-open,.password-toggle[aria-pressed=false] .password-eye-closed{display:none}
 :root[data-theme=dark] .password-toggle{color:#c0b6c4}
 :root[data-theme=dark] .password-toggle:hover{background:#c1a3e321;color:#d5b8ee}
-.hero{background-image:url("https://images.pexels.com/videos/27797884/free-video-27797884.jpg?auto=compress&dpr=1&h=750&w=1260")!important}
-@media(prefers-reduced-motion:reduce){.hero-video{display:none!important}.hero{background-image:url("https://images.pexels.com/videos/27797884/free-video-27797884.jpg?auto=compress&dpr=1&h=750&w=1260")!important}}
+.hero{background-image:url("https://images.pexels.com/videos/27797884/free-video-33068685.jpg?auto=compress&dpr=1&h=750&w=1260")!important}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none!important}.hero{background-image:url("https://images.pexels.com/videos/27797884/free-video-33068685.jpg?auto=compress&dpr=1&h=750&w=1260")!important}}
 /* Keep the hero video visually continuous with the section below it. */
 .hero,.hero-stats,:root[data-theme=dark] .hero,:root[data-theme=dark] .hero-stats{box-shadow:none!important}
 
