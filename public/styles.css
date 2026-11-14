@@ -339,4 +339,10 @@ body{background:var(--bg);color:var(--text)}
 :root[data-theme="dark"] .auth-art{background-position:center 42%}
 :root[data-theme="dark"] .sidebar-promo{color:#eee5dc}
 :root[data-theme="dark"] .sidebar-promo p{color:#eee5dc}
+:root:not([data-theme="dark"]) .hero:after{background:linear-gradient(90deg,transparent 51%,#51485638 58%,#51485620 63%,transparent 72%),radial-gradient(ellipse at 78% 43%,transparent 8%,#f2eee620 58%,#eee9e050 100%)}
+:root[data-theme="dark"] .hero:after{background:linear-gradient(90deg,transparent 51%,#080b1291 58%,#080b125a 64%,transparent 72%),radial-gradient(ellipse at 78% 43%,transparent 7%,#11172020 57%,#11172070 100%)}
+.auth-art{background-image:linear-gradient(90deg,transparent 73%,#f6f2eaa6 100%),linear-gradient(0deg,#f0ece4f0 0%,#f0ece455 54%,#f0ece422 100%),url('/assets/hero-art.jpg');box-shadow:inset -36px 0 70px #36313d2b}
+:root[data-theme="dark"] .auth-art{background-image:linear-gradient(90deg,transparent 73%,#191e29c4 100%),linear-gradient(0deg,#171c26f2 0%,#171c2678 56%,#171c263a 100%),url('/assets/hero-art.jpg');box-shadow:inset -36px 0 70px #090c1575}
+.auth-art-top .brand{padding:6px 9px;border:1px solid #d7cfc3;border-radius:9px;background:#f1ede5e8}
+:root[data-theme="dark"] .auth-art-top .brand{border-color:#424955;background:#1e2430e8}
 
