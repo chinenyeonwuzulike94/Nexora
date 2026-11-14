@@ -345,4 +345,6 @@ body{background:var(--bg);color:var(--text)}
 :root[data-theme="dark"] .auth-art{background-image:linear-gradient(90deg,transparent 73%,#191e29c4 100%),linear-gradient(0deg,#171c26f2 0%,#171c2678 56%,#171c263a 100%),url('/assets/hero-art.jpg');box-shadow:inset -36px 0 70px #090c1575}
 .auth-art-top .brand{padding:6px 9px;border:1px solid #d7cfc3;border-radius:9px;background:#f1ede5e8}
 :root[data-theme="dark"] .auth-art-top .brand{border-color:#424955;background:#1e2430e8}
+:root:not([data-theme="dark"]) .hero:after{background:linear-gradient(90deg,transparent 54%,#51485652 59%,#51485624 64%,transparent 71%),radial-gradient(ellipse at 78% 43%,transparent 8%,#f2eee620 58%,#eee9e050 100%)}
+:root[data-theme="dark"] .hero:after{background:linear-gradient(90deg,transparent 54%,#080b12b5 59%,#080b125e 64%,transparent 71%),radial-gradient(ellipse at 78% 43%,transparent 7%,#11172020 57%,#11172070 100%)}
 
