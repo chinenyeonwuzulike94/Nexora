@@ -483,3 +483,11 @@ body{background:var(--bg);color:var(--text)}
 :root[data-theme="dark"] .password-strength.strong{color:#8bd1a8}
 :root[data-theme="dark"] .form-feedback.error{background:#3b252c;color:#ffc1c7}
 :root[data-theme="dark"] .form-feedback.success{background:#20382d;color:#a9e3bb}
+
+/* Theme switch contrast and logo cleanup */
+:root[data-theme="dark"] .theme-toggle{background:#eee6dc!important;color:#56386f!important;border:0!important;box-shadow:0 4px 14px #080a1050,0 0 0 1px #fff3!important}
+:root[data-theme="dark"] .theme-toggle:hover{background:#fff8ed!important;color:#704b8b!important}
+:root:not([data-theme="dark"]) .theme-toggle{background:#f2eaf7!important;color:#654584!important;border:0!important;box-shadow:0 3px 12px #463b4c18,0 0 0 1px #fff8!important}
+:root:not([data-theme="dark"]) .theme-toggle:hover{background:#fff8ff!important;color:#8058a0!important}
+:root:not([data-theme="dark"]) .brand-logo-light{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;outline:0!important}
+
