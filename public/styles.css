@@ -512,4 +512,8 @@ body{background:var(--bg);color:var(--text)}
 .auth-card .button{min-height:48px;margin-top:8px}
 .auth-switch{margin-top:22px}
 @media(max-width:720px){.auth-card-wrap{min-height:auto;padding:24px 18px 40px}.auth-card{width:min(100%,460px)!important}.auth-card-top{margin-bottom:8px}}
-
+/* Auth artwork: cinematic HD backdrop, separate from the landing feature. */
+:root:not([data-theme=dark]) .auth-art{background-image:linear-gradient(90deg,transparent 68%,#f6f2eaa6 100%),linear-gradient(0deg,#f0ece4f0 0%,#f0ece455 50%,#f0ece422 100%),url("https://image.tmdb.org/t/p/w1280/uhUO7vQQKvCTfQWubOt5MAKokbL.jpg");background-size:cover;background-position:center 46%}
+:root[data-theme=dark] .auth-art{background-image:linear-gradient(90deg,transparent 68%,#191e29c4 100%),linear-gradient(0deg,#171c26f2 0%,#171c2678 54%,#171c263a 100%),url("https://image.tmdb.org/t/p/w1280/uhUO7vQQKvCTfQWubOt5MAKokbL.jpg");background-size:cover;background-position:center 46%}
+.hero-video{position:absolute;z-index:0;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 48%}
+@media(max-width:720px){.hero-video{object-position:center center}}
