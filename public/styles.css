@@ -345,6 +345,14 @@ body{background:var(--bg);color:var(--text)}
 :root[data-theme="dark"] .auth-art{background-image:linear-gradient(90deg,transparent 73%,#191e29c4 100%),linear-gradient(0deg,#171c26f2 0%,#171c2678 56%,#171c263a 100%),url('/assets/hero-art.jpg');box-shadow:inset -36px 0 70px #090c1575}
 .auth-art-top .brand{padding:6px 9px;border:1px solid #d7cfc3;border-radius:9px;background:#f1ede5e8}
 :root[data-theme="dark"] .auth-art-top .brand{border-color:#424955;background:#1e2430e8}
+:root:not([data-theme="dark"]) .brand-logo-light{background:transparent;box-shadow:none;border-radius:0}
+:root:not([data-theme="dark"]) .auth-art-top .brand,:root[data-theme="dark"] .auth-art-top .brand{padding:0;border:0;border-radius:0;background:transparent}
+.hero{background-size:cover!important;background-position:center 22%!important;background-color:var(--bg);box-shadow:inset 0 0 0 1px #f2ece440,inset 0 0 55px #423b4522,0 18px 48px #39333c20}
+:root:not([data-theme="dark"]) .hero:before{background:linear-gradient(90deg,#efebe3f2 0%,#efebe3e8 22%,#efebe3c7 42%,#efebe37c 58%,#efebe335 77%,#efebe313 100%),linear-gradient(0deg,#e4ded3a8,transparent 46%)}
+:root:not([data-theme="dark"]) .hero:after{background:radial-gradient(ellipse at 70% 45%,transparent 4%,#3f354315 68%,#3f354332 100%)}
+:root[data-theme="dark"] .hero:before{background:linear-gradient(90deg,#151922f2 0%,#151922e8 22%,#151922c4 42%,#15192282 58%,#15192237 77%,#15192218 100%),linear-gradient(0deg,#151922b8,transparent 46%)}
+:root[data-theme="dark"] .hero:after{background:radial-gradient(ellipse at 70% 45%,transparent 4%,#090d1640 68%,#090d1682 100%)}
+@media(max-width:720px){.hero{background-size:cover!important;background-position:center 28%!important}.hero:before{background:linear-gradient(180deg,#efebe3e8 0%,#efebe3bc 45%,#efebe3a0 75%,#e8e2d8e8 100%)}:root[data-theme="dark"] .hero:before{background:linear-gradient(180deg,#151922e8 0%,#151922bd 45%,#1519229e 75%,#151922e8 100%)}}
 :root:not([data-theme="dark"]) .hero:after{background:linear-gradient(90deg,transparent 54%,#51485652 59%,#51485624 64%,transparent 71%),radial-gradient(ellipse at 78% 43%,transparent 8%,#f2eee620 58%,#eee9e050 100%)}
 :root[data-theme="dark"] .hero:after{background:linear-gradient(90deg,transparent 54%,#080b12b5 59%,#080b125e 64%,transparent 71%),radial-gradient(ellipse at 78% 43%,transparent 7%,#11172020 57%,#11172070 100%)}
 
