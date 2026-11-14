@@ -12,6 +12,7 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = process.env.VERCEL ? path.join('/tmp', 'nexora-demo-data') : path.join(root, 'data');
 const dbPath = path.join(dataDir, 'nexora.json');
 const port = Number(process.env.PORT || 4173);
+const authAttempts = new Map();
 const movieSeed = [
   { id:'odyssey', title:'The Odyssey', year:2026, rating:'8.9', genre:'Adventure', type:'Movie', platform:'Netflix', poster:'/assets/home-posters/the-odyssey.jpg', art:'linear-gradient(145deg,#1c3445,#c18957 48%,#090d12)', featured:true, description:'A hero. A mission. A journey beyond limits.' },
   { id:'moana', title:'Moana', year:2026, rating:'8.7', genre:'Adventure', type:'Movie', platform:'Disney+', poster:'/assets/home-posters/moana.jpg', art:'linear-gradient(160deg,#25a9a6,#f5a957 60%,#073e50)', description:'A new ocean adventure awaits.' },
@@ -26,6 +27,10 @@ const movieSeed = [
   { id:'the-menu', title:'The Menu', year:2022, rating:'7.2', genre:'Thriller', type:'Movie', platform:'Hulu', poster:'https://image.tmdb.org/t/p/w500/fPtUgMcLIboqlTlPrq0bQpKK8eq.jpg', art:'linear-gradient(160deg,#b77043,#131a1c 70%)', description:'A couple visits an exclusive restaurant where the evening has a surprising menu.' },
   { id:'inside-out-two', title:'Inside Out 2', year:2024, rating:'7.6', genre:'Family', type:'Movie', platform:'Disney+', poster:'https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZVzLvDESb2QY.jpg', art:'linear-gradient(160deg,#ef784e,#7d56be 70%)', description:'Riley navigates new emotions as she grows into a new chapter of life.' }
 ];
+const planPreview = [
+  { id:'nexora-one', name:'Nexora One', price:'$29.99', amountCents:2999, currency:'USD', period:'month', label:'With ads where offered', features:['Netflix, Prime Video, Disney+ and Hulu','One Nexora plan and one monthly bill','Unified search, recommendations and watchlist'] },
+  { id:'nexora-one-premium', name:'Nexora One Premium', price:'$49.99', amountCents:4999, currency:'USD', period:'month', label:'Premium tiers where available', features:['All four platforms in one proposed bundle','Premium playback quality where supported','One Nexora plan and one monthly bill','Unified search, recommendations and watchlist'] }
+];
 const testimonialSeed = [
   { id:'t1', name:'Amara O.', role:'Film lover', quote:'I used to spend more time looking for a movie than watching one. Nexora makes the good stuff easy to find.', rating:5, initials:'AO', color:'#7c3aed' },
   { id:'t2', name:'Daniel K.', role:'Weekend binge watcher', quote:'The platform filters are the feature I did not know I needed. One quick search and we are already watching.', rating:5, initials:'DK', color:'#ec4899' },
@@ -39,14 +44,19 @@ async function loadDb(){
   catch { db={users:[],watchlists:{},newsletter:[],testimonials:[]}; await saveDb(); }
 }
 async function saveDb(){ await writeFile(dbPath,JSON.stringify(db,null,2)); }
-function send(res,status,body,headers={}){res.writeHead(status,{'content-type':'application/json; charset=utf-8',...headers});res.end(JSON.stringify(body));}
-async function bodyJson(req){let raw='';for await(const chunk of req)raw+=chunk;if(raw.length>1_000_000)throw new Error('Request too large');return raw?JSON.parse(raw):{};}
+function send(res,status,body,headers={}){res.writeHead(status,{'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff','referrer-policy':'strict-origin-when-cross-origin',...headers});res.end(JSON.stringify(body));}
+async function bodyJson(req){const parts=[];let size=0;for await(const chunk of req){size+=chunk.length;if(size>64_000){const e=new Error('Request too large');e.statusCode=413;throw e;}parts.push(chunk);}const raw=Buffer.concat(parts).toString('utf8');if(!raw)return{};try{const body=JSON.parse(raw);if(!body||typeof body!=='object'||Array.isArray(body)){const e=new Error('A JSON object is required.');e.statusCode=400;throw e;}return body;}catch(err){if(err.statusCode)throw err;const e=new Error('Invalid JSON request body.');e.statusCode=400;throw e;}}
 function currentUser(req){const token=(req.headers.cookie||'').match(/nexora_session=([^;]+)/)?.[1];return token?sessions.get(token):null;}
+function sameOriginMutation(req){if(!req.headers.origin)return true;const requestHost=String(req.headers['x-forwarded-host']||req.headers.host||'').split(',')[0].trim().toLowerCase();try{return new URL(req.headers.origin).host.toLowerCase()===requestHost}catch{return false}}
+function authRateAllowed(req){const ip=String(req.headers['x-forwarded-for']||req.socket?.remoteAddress||'unknown').split(',')[0].trim();const now=Date.now(),recent=(authAttempts.get(ip)||[]).filter(t=>now-t<15*60*1000);if(recent.length>=10){authAttempts.set(ip,recent);return false}recent.push(now);authAttempts.set(ip,recent);if(authAttempts.size>5000){for(const [key,times] of authAttempts)if(!times.some(t=>now-t<15*60*1000))authAttempts.delete(key)}return true}
 function safeUser(u){return u?{id:u.id,name:u.name,email:u.email}:null;}
 function slug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp'};
 export async function handler(req,res){
   const url=new URL(req.url,'http://localhost');let route=decodeURIComponent(url.pathname);
+  if(!['GET','HEAD','OPTIONS'].includes(req.method)&&!sameOriginMutation(req))return send(res,403,{error:'Cross-origin request denied.'});
+  if(req.method==='GET'&&route==='/api/subscription/plans')return send(res,200,{currency:'USD',mode:'preview',checkoutEnabled:false,plans:planPreview,notice:'Proposed demo plans only. Platform access and final pricing require confirmed partner agreements.'});
+  if(req.method==='POST'&&route==='/api/subscription/checkout')return send(res,503,{error:'Subscription checkout is not enabled in this preview. No payment details were accepted.'});
   if(req.method==='GET'&&route==='/api/health')return send(res,200,{ok:true,name:'Nexora API',movies:movieSeed.length});
   if(req.method==='GET'&&route==='/api/movies'){
     const q=(url.searchParams.get('q')||'').toLowerCase(), genre=url.searchParams.get('genre'),type=url.searchParams.get('type'),platform=url.searchParams.get('platform'),sort=url.searchParams.get('sort');
@@ -66,13 +76,14 @@ export async function handler(req,res){
   if(route.startsWith('/api/auth/')){
     if(req.method==='GET'&&route==='/api/auth/me')return send(res,200,{user:safeUser(currentUser(req))});
     if(req.method==='POST'&&(route==='/api/auth/register'||route==='/api/auth/login')){
+      if(!authRateAllowed(req))return send(res,429,{error:'Too many sign-in attempts. Try again in 15 minutes.'},{'retry-after':'900'});
       const b=await bodyJson(req),email=String(b.email||'').trim().toLowerCase(),password=String(b.password||'');if(!/^\S+@\S+\.\S+$/.test(email)||password.length<8)return send(res,400,{error:'Use a valid email and a password with at least 8 characters.'});
       let user=db.users.find(u=>u.email===email);
       if(route.endsWith('register')){if(user)return send(res,409,{error:'An account with this email already exists.'});const salt=randomBytes(16).toString('hex');user={id:randomBytes(12).toString('hex'),name:String(b.name||email.split('@')[0]).slice(0,60),email,salt,hash:scryptSync(password,salt,64).toString('hex')};db.users.push(user);await saveDb();}
       else if(!user||!timingSafeEqual(Buffer.from(user.hash,'hex'),scryptSync(password,user.salt,64)))return send(res,401,{error:'That email and password combination was not found.'});
-      const token=randomBytes(24).toString('hex');sessions.set(token,user);return send(res,200,{user:safeUser(user)},{'set-cookie':`nexora_session=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=604800`});
+      const token=randomBytes(32).toString('hex');sessions.set(token,user);const flags=['HttpOnly','SameSite=Lax','Path=/','Max-Age=604800'];if(process.env.VERCEL)flags.push('Secure');return send(res,200,{user:safeUser(user)},{'set-cookie':`nexora_session=${token}; ${flags.join('; ')}`});
     }
-    if(req.method==='POST'&&route==='/api/auth/logout'){const token=(req.headers.cookie||'').match(/nexora_session=([^;]+)/)?.[1];if(token)sessions.delete(token);return send(res,200,{ok:true},{'set-cookie':'nexora_session=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0'});}
+    if(req.method==='POST'&&route==='/api/auth/logout'){const token=(req.headers.cookie||'').match(/nexora_session=([^;]+)/)?.[1];if(token)sessions.delete(token);const flags=['HttpOnly','SameSite=Lax','Path=/','Max-Age=0'];if(process.env.VERCEL)flags.push('Secure');return send(res,200,{ok:true},{'set-cookie':`nexora_session=; ${flags.join('; ')}`});}
   }
   if(route==='/api/watchlist'&&req.method==='GET'){const user=currentUser(req),key=user?.id||req.headers['x-demo-user']||'guest';return send(res,200,{ids:db.watchlists[key]||[]});}
   if(route==='/api/watchlist'&&req.method==='POST'){const b=await bodyJson(req),user=currentUser(req),key=user?.id||req.headers['x-demo-user']||'guest';if(!movieSeed.some(m=>m.id===b.id))return send(res,404,{error:'Movie not found.'});db.watchlists[key]=[...new Set([...(db.watchlists[key]||[]),b.id])];await saveDb();return send(res,200,{ids:db.watchlists[key]});}
@@ -86,5 +97,5 @@ export async function handler(req,res){
 }
 await loadDb();
 if (!process.env.VERCEL) {
-  http.createServer((req,res)=>handler(req,res).catch(err=>{console.error(err);send(res,500,{error:'Something went wrong. Please try again.'});})).listen(port,()=>console.log(`Nexora is ready at http://localhost:${port}`));
+  http.createServer((req,res)=>handler(req,res).catch(err=>{if([400,413].includes(err.statusCode))return send(res,err.statusCode,{error:err.message});console.error(err);send(res,500,{error:'Something went wrong. Please try again.'});})).listen(port,()=>console.log(`Nexora is ready at http://localhost:${port}`));
 }
