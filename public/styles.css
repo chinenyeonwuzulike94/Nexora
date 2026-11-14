@@ -491,3 +491,7 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .theme-toggle:hover{background:#fff8ff!important;color:#8058a0!important}
 :root:not([data-theme="dark"]) .brand-logo-light{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;outline:0!important}
 
+/* Theme toggle uses the same primary CTA color as sign-in in either theme. */
+:root .theme-toggle,:root[data-theme="dark"] .theme-toggle{background:var(--primary)!important;color:#f8f4ec!important;border:0!important;box-shadow:0 5px 14px color-mix(in srgb,var(--primary) 32%,transparent)!important}
+:root .theme-toggle:hover,:root[data-theme="dark"] .theme-toggle:hover{background:var(--primary)!important;color:#fff!important;filter:brightness(1.08);box-shadow:0 7px 18px color-mix(in srgb,var(--primary) 38%,transparent)!important}
+
