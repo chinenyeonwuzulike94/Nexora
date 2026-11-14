@@ -455,4 +455,6 @@ body{background:var(--bg);color:var(--text)}
 
 /* Keep the landing navigation clear so the hero artwork shows through without a glass panel. */
 #app:has(.hero)>.topbar,:root[data-theme="dark"] #app:has(.hero)>.topbar{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-
+/* Landing page eyebrow hierarchy: make the named section labels easier to scan. */
+#app:has(.hero) .section-head .kicker,#app:has(.hero) .cta-panel>.eyebrow{font-size:14px;line-height:1.25;letter-spacing:.12em;font-weight:700}
+@media(max-width:720px){#app:has(.hero) .section-head .kicker,#app:has(.hero) .cta-panel>.eyebrow{font-size:12px;letter-spacing:.11em}}
