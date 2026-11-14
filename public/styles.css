@@ -528,8 +528,11 @@ body{background:var(--bg);color:var(--text)}
 .password-toggle[aria-pressed=true] .password-eye-open,.password-toggle[aria-pressed=false] .password-eye-closed{display:none}
 :root[data-theme=dark] .password-toggle{color:#c0b6c4}
 :root[data-theme=dark] .password-toggle:hover{background:#c1a3e321;color:#d5b8ee}
-.hero{background-image:url("https://images.pexels.com/videos/27797884/free-video-33068685.jpg?auto=compress&dpr=1&h=750&w=1260")!important}
-@media(prefers-reduced-motion:reduce){.hero-video{display:none!important}.hero{background-image:url("https://images.pexels.com/videos/27797884/free-video-33068685.jpg?auto=compress&dpr=1&h=750&w=1260")!important}}
+.hero{background-image:url("https://i.ytimg.com/vi/f_bKjZeJBBI/maxresdefault.jpg")!important}
+@media(prefers-reduced-motion:reduce){.hero-trailer{display:none!important}.hero{background-image:url("https://i.ytimg.com/vi/f_bKjZeJBBI/maxresdefault.jpg")!important}}
 /* Keep the hero video visually continuous with the section below it. */
 .hero,.hero-stats,:root[data-theme=dark] .hero,:root[data-theme=dark] .hero-stats{box-shadow:none!important}
+
+.hero-trailer{position:absolute;z-index:0;top:50%;left:50%;width:max(100%,177.78vh);height:max(100%,56.25vw);max-width:none;transform:translate(-50%,-50%);border:0;pointer-events:none}
+.hero:after{content:none!important;display:none!important}
 
