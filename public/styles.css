@@ -468,3 +468,18 @@ body{background:var(--bg);color:var(--text)}
 .loader-text{font:500 13px/1.4 Inter,Arial,sans-serif;color:var(--muted)}
 @keyframes nexora-spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.loader-spinner{animation-duration:1.8s}}
+
+/* Clear feedback for account access and password errors. */
+.forgot-link{text-align:right;margin:-7px 0 14px;font-size:12px}
+.forgot-link a{color:#704aa8;text-decoration:underline;text-underline-offset:3px}
+.password-strength{display:block;margin-top:6px;color:#756f73;font-size:11px;line-height:1.45}
+.password-strength.weak{color:#a64450}
+.password-strength.strong{color:#347653}
+.form-feedback.error{display:block;margin-top:12px;padding:10px 12px;border-radius:8px;background:#f4e3e2;color:#8b303c;font-size:12px;line-height:1.5}
+.form-feedback.success{display:block;margin-top:12px;padding:10px 12px;border-radius:8px;background:#e3eee5;color:#2d684b;font-size:12px;line-height:1.5}
+:root[data-theme="dark"] .forgot-link a{color:#c1a3e3}
+:root[data-theme="dark"] .password-strength{color:#c1bac0}
+:root[data-theme="dark"] .password-strength.weak{color:#f2a4ad}
+:root[data-theme="dark"] .password-strength.strong{color:#8bd1a8}
+:root[data-theme="dark"] .form-feedback.error{background:#3b252c;color:#ffc1c7}
+:root[data-theme="dark"] .form-feedback.success{background:#20382d;color:#a9e3bb}
