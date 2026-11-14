@@ -528,8 +528,8 @@ body{background:var(--bg);color:var(--text)}
 .password-toggle[aria-pressed=true] .password-eye-open,.password-toggle[aria-pressed=false] .password-eye-closed{display:none}
 :root[data-theme=dark] .password-toggle{color:#c0b6c4}
 :root[data-theme=dark] .password-toggle:hover{background:#c1a3e321;color:#d5b8ee}
-.hero{background-image:url("https://i.ytimg.com/vi/f_bKjZeJBBI/maxresdefault.jpg")!important}
-@media(prefers-reduced-motion:reduce){.hero-trailer{display:none!important}.hero{background-image:url("https://i.ytimg.com/vi/f_bKjZeJBBI/maxresdefault.jpg")!important}}
+.hero{background-image:url("https://images.pexels.com/videos/28828931/pexels-photo-28828931.jpeg?auto=compress&dpr=1&h=750&w=1260")!important}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none!important}.hero{background-image:url("https://images.pexels.com/videos/28828931/pexels-photo-28828931.jpeg?auto=compress&dpr=1&h=750&w=1260")!important}}
 /* Keep the hero video visually continuous with the section below it. */
 .hero,.hero-stats,:root[data-theme=dark] .hero,:root[data-theme=dark] .hero-stats{box-shadow:none!important}
 
