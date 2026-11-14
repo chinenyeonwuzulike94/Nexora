@@ -38,3 +38,20 @@
 .error-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
 @media(max-width:1050px){.hero{min-height:560px}.app-main .home-shelf .poster-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:720px){.hero{min-height:660px}.hero h1{font-size:24px;line-height:1.25;max-width:340px}.hero-copy{font-size:16px;line-height:1.45;max-width:340px}.hero-stats{grid-template-columns:repeat(3,minmax(0,1fr));padding:12px;gap:7px}.hero-stats .stat{padding:2px 5px}.hero-stats .stat:nth-child(odd){border-right:0}.hero-stats .stat strong{font-size:14px}.hero-stats .stat span{font-size:9px}.home-feature{min-height:320px;margin-bottom:36px;background-position:56% center}.home-feature-content{width:100%;padding:24px 20px}.home-feature h1{font-size:32px}.home-feature-meta{font-size:11px}.home-feature-content>p{font-size:13px}.home-feature-tag{font-size:12px}.app-main .home-shelf .poster-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.home-shelf .poster-art{height:clamp(190px,58vw,245px)}.sidebar-promo{display:none}}
+
+/* Figma alignment refinements: keep the cast collage at its natural aspect ratio. */
+.navlinks{gap:30px;font:500 16px/1 Oswald,sans-serif;letter-spacing:.015em;color:#e2e7ef}
+.topbar{gap:34px}
+.hero{background-size:auto 100%;background-position:right center}
+@media(max-width:1050px){.navlinks{gap:19px;font-size:14px}.navlinks a:nth-last-child(-n+2){display:inline}.topbar{gap:20px}.brand-logo{width:150px}.hero{background-size:auto 100%;background-position:right center}}
+.feature-art.odyssey-detail-art{background-position:left center, left center,center;background-size:cover,cover,cover}
+.trailer-main{max-width:1160px;margin-inline:auto;width:100%}
+.trailer-heading{margin:28px 0 18px}
+.trailer-heading h1{font:600 clamp(32px,5vw,52px)/1.05 Oswald,sans-serif;margin:0}
+.youtube-frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#000;box-shadow:var(--shadow)}
+.youtube-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.trailer-footer{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:18px;color:var(--muted)}
+.tabs{display:flex;align-items:center;gap:8px}
+.tab{display:inline-flex;align-items:center;justify-content:center;min-height:40px;line-height:1;white-space:nowrap;text-align:center;vertical-align:middle}
+@media(max-width:720px){.hero{background-size:auto 72%;background-position:right 18% top 1%}.hero:before{background:linear-gradient(90deg,#06111ff4 0%,#071321d9 50%,#0713214a 100%),linear-gradient(0deg,#020c17ed 0%,#020c1766 55%,transparent 100%)}.trailer-main{padding:25px 18px 38px}.trailer-heading{margin:20px 0 14px}.trailer-footer{align-items:flex-start;flex-direction:column}.trailer-layout .app-topbar{padding-inline:18px}}
+@media(max-width:720px){.tabs{gap:6px}.tab{min-height:36px;padding-inline:12px}}
