@@ -428,3 +428,28 @@ body{background:var(--bg);color:var(--text)}
   color:#706a70;
 }
 
+/* Editorial section hierarchy, real testimonial portraits and a clearer genre label. */
+.section-title{font-size:clamp(35px,3vw,40px)}
+.kicker{font-size:11px;letter-spacing:.14em}
+.genre-card strong{color:#fff;text-shadow:0 2px 10px #000b;font-size:20px}
+.avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;display:block;flex:none;box-shadow:0 3px 12px #15101c35}
+.platform-logo-disney{width:min(150px,72%);height:56px;object-fit:contain;filter:drop-shadow(0 2px 8px #0005)}
+
+/* Put the hero artwork behind the primary navigation, as in the Figma composition. */
+#app:has(.hero)>.topbar{position:absolute;z-index:10;top:0;left:50%;transform:translateX(-50%);width:min(var(--max),calc(100% - 64px));padding-inline:14px;background:linear-gradient(180deg,#efebe3a8 0%,#efebe35c 70%,transparent 100%);backdrop-filter:blur(7px)}
+.hero{min-height:100svh!important}
+@media(min-width:721px){.hero{margin-top:0!important}}
+@media(max-width:720px){
+  #app:has(.hero)>.topbar{width:calc(100% - 36px);height:72px;padding-inline:0}
+  .hero{width:100vw!important;max-width:none!important;margin-left:calc(50% - 50vw)!important;margin-top:0!important;min-height:100svh!important;border-radius:0!important}
+  .hero-content{padding-top:110px}
+  .section-title{font-size:clamp(30px,8vw,34px)}
+}
+:root[data-theme="dark"] #app:has(.hero)>.topbar{background:linear-gradient(180deg,#151922d9 0%,#1519228c 70%,transparent 100%)}
+
+/* Secondary actions read as translucent glass before hover and selection. */
+:root:not([data-theme="dark"]) .button.secondary,:root:not([data-theme="dark"]) .button.ghost{border:1px solid #ffffffb8!important;background:#fff8!important;color:#48404f;backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 #ffffffd9,0 7px 20px #45374d20}
+:root:not([data-theme="dark"]) .button.secondary:hover,:root:not([data-theme="dark"]) .button.ghost:hover{background:#fffdf2e8!important;box-shadow:inset 0 1px 0 #fff,0 10px 24px #45374d2b}
+:root[data-theme="dark"] .button.secondary,:root[data-theme="dark"] .button.ghost{border:1px solid #ffffff50!important;background:#ffffff18!important;color:#f4edf8;backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 #ffffff40,0 8px 22px #080a1038}
+:root[data-theme="dark"] .button.secondary:hover,:root[data-theme="dark"] .button.ghost:hover{background:#ffffff2a!important;box-shadow:inset 0 1px 0 #ffffff60,0 10px 25px #080a1055}
+
