@@ -355,10 +355,10 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:720px){.hero{background-size:cover!important;background-position:center 28%!important}.hero:before{background:linear-gradient(180deg,#efebe3d1 0%,#efebe3a1 34%,#efebe366 60%,#e8e2d899 100%)}:root[data-theme="dark"] .hero:before{background:linear-gradient(180deg,#151922db 0%,#151922ad 34%,#15192270 60%,#151922bd 100%)}}
 @media(min-width:721px){.hero{width:100vw;max-width:none;min-height:clamp(400px,calc(100vh - 92px),820px);min-height:clamp(400px,calc(100svh - 92px),820px);margin-left:calc(50% - 50vw);border-radius:0;border-inline:0;background-size:cover!important;background-position:center 18%!important}.hero-content{padding-left:clamp(50px,7vw,120px)}}
 .hero{isolation:isolate;background-image:none!important;background-color:var(--bg)}
-.hero-image{position:absolute;z-index:0;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center top}
+.hero-image{position:absolute;z-index:0;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 44%}
 .hero:before,.hero:after{z-index:1}
 .hero-content,.hero-stats{z-index:2}
-@media(max-width:720px){.hero-image{object-position:center center}}
+@media(max-width:720px){.hero-image{object-position:center 42%}}
 .hero{border:0!important;box-shadow:inset 0 -26px 50px -34px #463b4c58,0 18px 48px #39333c20}
 .hero-stats{border-top:0;box-shadow:0 -14px 30px -20px #463b4c70}
 .stat{border:0}
@@ -528,11 +528,9 @@ body{background:var(--bg);color:var(--text)}
 .password-toggle[aria-pressed=true] .password-eye-open,.password-toggle[aria-pressed=false] .password-eye-closed{display:none}
 :root[data-theme=dark] .password-toggle{color:#c0b6c4}
 :root[data-theme=dark] .password-toggle:hover{background:#c1a3e321;color:#d5b8ee}
-.hero{background-image:url("https://images.pexels.com/videos/28828931/pexels-photo-28828931.jpeg?auto=compress&dpr=1&h=750&w=1260")!important}
-@media(prefers-reduced-motion:reduce){.hero-video{display:none!important}.hero{background-image:url("https://images.pexels.com/videos/28828931/pexels-photo-28828931.jpeg?auto=compress&dpr=1&h=750&w=1260")!important}}
-/* Keep the hero video visually continuous with the section below it. */
+.hero{background-image:url("/assets/hero-art.jpg")!important}
+/* Keep the hero artwork visually continuous with the section below it. */
 .hero,.hero-stats,:root[data-theme=dark] .hero,:root[data-theme=dark] .hero-stats{box-shadow:none!important}
 
-.hero-trailer{position:absolute;z-index:0;top:50%;left:50%;width:max(100%,177.78vh);height:max(100%,56.25vw);max-width:none;transform:translate(-50%,-50%);border:0;pointer-events:none}
 .hero:after{content:none!important;display:none!important}
 
