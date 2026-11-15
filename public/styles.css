@@ -534,5 +534,9 @@ body{background:var(--bg);color:var(--text)}
 
 .hero:after{content:none!important;display:none!important}
 .hero-image{filter:brightness(1.16) saturate(1.12) contrast(1.02)}
-.hero:before{opacity:.5}
+:root:not([data-theme=dark]) .hero:before{opacity:1;background:linear-gradient(90deg,#efebe38f 0%,#efebe35c 22%,#efebe324 42%,transparent 62%)}
+:root[data-theme=dark] .hero:before{opacity:1;background:linear-gradient(90deg,#151922a8 0%,#15192270 25%,#15192220 48%,transparent 66%)}
+:root:not([data-theme=dark]) .hero-content{text-shadow:0 1px 12px #efebe39c}
+:root[data-theme=dark] .hero-content{text-shadow:0 2px 12px #0009}
+@media(max-width:720px){:root:not([data-theme=dark]) .hero:before{background:radial-gradient(ellipse 100% 62% at 35% 48%,#efebe38f 0%,#efebe35c 46%,transparent 100%)}:root[data-theme=dark] .hero:before{background:radial-gradient(ellipse 100% 62% at 35% 48%,#151922b0 0%,#15192270 46%,transparent 100%)}}
 
