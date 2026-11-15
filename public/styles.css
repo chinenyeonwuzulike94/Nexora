@@ -533,4 +533,6 @@ body{background:var(--bg);color:var(--text)}
 .hero,.hero-stats,:root[data-theme=dark] .hero,:root[data-theme=dark] .hero-stats{box-shadow:none!important}
 
 .hero:after{content:none!important;display:none!important}
+.hero-image{filter:brightness(1.16) saturate(1.12) contrast(1.02)}
+.hero:before{opacity:.5}
 
