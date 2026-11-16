@@ -580,3 +580,9 @@ body{background:var(--bg);color:var(--text)}
 .home-feature-artwork img{filter:none!important}
 :root:not([data-theme="dark"]) .hero:before,:root:not([data-theme="dark"]) .home-feature:before{background:linear-gradient(90deg,#efebe3c9 0%,#efebe39e 28%,#efebe356 46%,#efebe322 56%,transparent 68%)!important}
 :root[data-theme="dark"] .hero:before,:root[data-theme="dark"] .home-feature:before{background:linear-gradient(90deg,#151922df 0%,#151922ad 30%,#15192260 48%,#15192224 58%,transparent 70%)!important}
+
+
+/* Landing artwork: remove all image shading and filters in both themes. */
+.hero{box-shadow:none!important;filter:none!important}
+.hero:before,.hero:after{content:none!important;display:none!important;opacity:0!important;background:none!important}
+.hero-video,.hero-image{filter:none!important;box-shadow:none!important}
