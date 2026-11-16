@@ -554,3 +554,8 @@ body{background:var(--bg);color:var(--text)}
 .home-feature-artwork img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;filter:brightness(1.04)}
 .home-feature:before{z-index:1}
 .home-feature-content{z-index:2}
+
+
+/* Home page: remove the movie type badges and card shadows in both color themes. */
+.home-shelf .poster-top{display:none!important}
+.home-feature,.home-shelf .poster-card,.home-shelf .poster-card:hover{box-shadow:none!important}
