@@ -600,3 +600,7 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .hero h1 em{color:#8e285f!important}
 :root:not([data-theme="dark"]) .hero-copy{color:#332f38!important}
 :root:not([data-theme="dark"]) .hero .eyebrow{color:#58387e!important}
+
+
+/* Near-black text tokens for readable light-theme copy across the site. */
+:root:not([data-theme="dark"]){color-scheme:light;--text:#242129;--muted:#514b55;--subtle:#6b6570}
