@@ -571,3 +571,12 @@ body{background:var(--bg);color:var(--text)}
 /* Keep the theme control aligned with the app header on the error page too. */
 .error-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px}
 .error-head .brand{justify-content:flex-start!important}
+
+
+/* Clear image shadows in the landing and home feature areas in both themes. */
+.hero,.hero-stats,.home-feature{box-shadow:none!important}
+.hero:after{display:none!important;background:none!important}
+.home-feature-artwork:before{display:none!important;filter:none!important}
+.home-feature-artwork img{filter:none!important}
+:root:not([data-theme="dark"]) .hero:before,:root:not([data-theme="dark"]) .home-feature:before{background:linear-gradient(90deg,#efebe3c9 0%,#efebe39e 28%,#efebe356 46%,#efebe322 56%,transparent 68%)!important}
+:root[data-theme="dark"] .hero:before,:root[data-theme="dark"] .home-feature:before{background:linear-gradient(90deg,#151922df 0%,#151922ad 30%,#15192260 48%,#15192224 58%,transparent 70%)!important}
