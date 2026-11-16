@@ -545,3 +545,12 @@ body{background:var(--bg);color:var(--text)}
 .hero-artwork .hero-image{width:100%;height:100%;object-fit:cover;object-position:center top}
 @media(max-width:720px){.hero-artwork .hero-image{object-position:38% center}}
 
+
+
+/* Keep the complete Odyssey still visible while the softened copy fills the card. */
+.home-feature{background-image:none!important;isolation:isolate}
+.home-feature-artwork{position:absolute;inset:0;z-index:0;overflow:hidden;background:#102136}
+.home-feature-artwork:before{content:"";position:absolute;inset:-18px;background:url('https://image.tmdb.org/t/p/original/y5nGxySCfrBIYw1SJF7W11gF3HJ.jpg') center/cover no-repeat;filter:blur(18px) brightness(.7);transform:scale(1.06)}
+.home-feature-artwork img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;filter:brightness(1.04)}
+.home-feature:before{z-index:1}
+.home-feature-content{z-index:2}
