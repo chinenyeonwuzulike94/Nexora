@@ -655,3 +655,11 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .hero .eyebrow{color:#3c3542!important}
 @media(max-width:1050px){:root:not([data-theme="dark"]) .hero-content{width:min(610px,72%);margin-left:0}}
 @media(max-width:720px){:root:not([data-theme="dark"]) .hero-content{width:calc(100% - 32px);margin:0 16px;padding:24px 20px;background:#efebe3ed;border-radius:4px}}
+
+
+/* Keep the copy within the image's open left area and preserve the cast artwork. */
+:root:not([data-theme="dark"]) .hero-content{width:min(470px,42vw);margin-left:clamp(24px,4vw,60px);padding:28px 30px;background:#efebe3fa;border-radius:4px}
+:root:not([data-theme="dark"]) .hero h1{font-size:clamp(40px,3.5vw,50px);line-height:1.12}
+:root:not([data-theme="dark"]) .topbar .navlinks a{color:#f4eee8!important;text-shadow:0 2px 10px #020c17;font-weight:600}
+@media(max-width:1050px){:root:not([data-theme="dark"]) .hero-content{width:min(470px,52vw);margin-left:24px}}
+@media(max-width:720px){:root:not([data-theme="dark"]) .hero-content{width:calc(100% - 32px);margin:0 16px;padding:24px 20px;background:#efebe3fa;border-radius:4px}:root:not([data-theme="dark"]) .hero h1{font-size:clamp(36px,10vw,46px)}}
