@@ -608,3 +608,8 @@ body{background:var(--bg);color:var(--text)}
 
 /* Localized light wash behind landing copy only; keep the remaining artwork clear. */
 :root:not([data-theme="dark"]) .hero-content{background:linear-gradient(90deg,#efebe3e6 0%,#efebe3c9 56%,#efebe366 82%,transparent 100%);text-shadow:none!important}
+
+
+/* Keep light-theme navigation legible over the hero artwork without a bar fill. */
+:root:not([data-theme="dark"]) .topbar .navlinks a{color:#242129;text-shadow:0 1px 8px #efebe3}
+:root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
