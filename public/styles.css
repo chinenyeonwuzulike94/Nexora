@@ -620,3 +620,16 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .hero:before{content:""!important;display:block!important;opacity:1!important;background:linear-gradient(90deg,#efebe3a8 0%,#efebe361 48%,#efebe333 100%)!important}
 :root:not([data-theme="dark"]) .topbar .navlinks a{color:#211e26;font-weight:600;text-shadow:0 1px 8px #efebe3}
 :root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
+
+
+/* Dark cinematic artwork with near-black hero copy on a soft localized light field. */
+:root:not([data-theme="dark"]) .hero:before{content:none!important;display:none!important;background:none!important}
+:root:not([data-theme="dark"]) .hero-content{position:relative;isolation:isolate;color:#211e26!important;text-shadow:none!important}
+:root:not([data-theme="dark"]) .hero-content:before{content:"";position:absolute;z-index:-1;inset:-42px -82px -34px -48px;border-radius:50%;background:radial-gradient(ellipse at 30% 50%,#efebe3f2 0%,#efebe3df 43%,#efebe3a3 70%,transparent 100%);pointer-events:none}
+:root:not([data-theme="dark"]) .hero h1{color:#211e26!important}
+:root:not([data-theme="dark"]) .hero h1 em{color:#362c36!important}
+:root:not([data-theme="dark"]) .hero-copy{color:#242129!important;text-shadow:none!important}
+:root:not([data-theme="dark"]) .hero .eyebrow{color:#3c3542!important;text-shadow:none!important}
+:root:not([data-theme="dark"]) .topbar .navlinks a{color:#211e26;font-weight:600;text-shadow:0 0 8px #efebe3}
+:root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
+@media(max-width:720px){:root:not([data-theme="dark"]) .hero-content:before{inset:-26px -18px -24px -18px;background:radial-gradient(ellipse at 35% 50%,#efebe3ed 0%,#efebe3d9 56%,#efebe38c 78%,transparent 100%)}}
