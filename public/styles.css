@@ -617,6 +617,6 @@ body{background:var(--bg);color:var(--text)}
 
 
 /* Give the complete light-theme hero a consistent soft wash, including the header area. */
-:root:not([data-theme="dark"]) .hero:before{content:""!important;display:block!important;opacity:1!important;background:linear-gradient(90deg,#efebe3dc 0%,#efebe3b8 48%,#efebe386 100%)!important}
+:root:not([data-theme="dark"]) .hero:before{content:""!important;display:block!important;opacity:1!important;background:linear-gradient(90deg,#efebe3a8 0%,#efebe361 48%,#efebe333 100%)!important}
 :root:not([data-theme="dark"]) .topbar .navlinks a{color:#211e26;font-weight:600;text-shadow:0 1px 8px #efebe3}
 :root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
