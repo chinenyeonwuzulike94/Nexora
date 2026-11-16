@@ -615,8 +615,8 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
 
 
-/* Light theme navigation contrast over hero artwork, localized to the link row. */
-:root:not([data-theme="dark"]) .topbar .navlinks{position:relative;isolation:isolate}
-:root:not([data-theme="dark"]) .topbar .navlinks:before{content:"";position:absolute;z-index:-1;inset:-14px -18px;border-radius:999px;background:linear-gradient(90deg,transparent 0%,#efebe3d9 12%,#efebe3d9 88%,transparent 100%);filter:blur(7px);pointer-events:none}
-:root:not([data-theme="dark"]) .topbar .navlinks a{color:#211e26;font-weight:600;text-shadow:none}
+
+/* Give the complete light-theme hero a consistent soft wash, including the header area. */
+:root:not([data-theme="dark"]) .hero:before{content:""!important;display:block!important;opacity:1!important;background:linear-gradient(90deg,#efebe3dc 0%,#efebe3b8 48%,#efebe386 100%)!important}
+:root:not([data-theme="dark"]) .topbar .navlinks a{color:#211e26;font-weight:600;text-shadow:0 1px 8px #efebe3}
 :root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
