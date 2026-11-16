@@ -644,3 +644,14 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .hero-content:before{content:none!important;display:none!important;background:none!important;filter:none!important}
 :root:not([data-theme="dark"]) .hero-content{background:linear-gradient(90deg,#efebe3ed 0%,#efebe3e5 68%,#efebe3b8 88%,transparent 100%);text-shadow:none!important}
 @media(max-width:720px){:root:not([data-theme="dark"]) .hero-content{background:linear-gradient(90deg,#efebe3ec 0%,#efebe3de 78%,#efebe3a8 100%)} }
+
+
+/* Dark cinematic hero in light mode; keep the near-black copy on a compact, clean panel. */
+:root:not([data-theme="dark"]) .hero-content:before{content:none!important;display:none!important}
+:root:not([data-theme="dark"]) .hero-content{width:min(610px,62%);margin-left:30px;padding:28px 30px;background:#efebe3ed;border-radius:4px;color:#211e26!important;text-shadow:none!important}
+:root:not([data-theme="dark"]) .hero h1{color:#211e26!important}
+:root:not([data-theme="dark"]) .hero h1 em{color:#362c36!important}
+:root:not([data-theme="dark"]) .hero-copy{color:#242129!important}
+:root:not([data-theme="dark"]) .hero .eyebrow{color:#3c3542!important}
+@media(max-width:1050px){:root:not([data-theme="dark"]) .hero-content{width:min(610px,72%);margin-left:0}}
+@media(max-width:720px){:root:not([data-theme="dark"]) .hero-content{width:calc(100% - 32px);margin:0 16px;padding:24px 20px;background:#efebe3ed;border-radius:4px}}
