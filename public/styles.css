@@ -593,3 +593,10 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .hero h1 em{color:#9c2f69!important}
 :root:not([data-theme="dark"]) .hero-copy{color:#403b45!important;text-shadow:none!important}
 :root:not([data-theme="dark"]) .hero .eyebrow{color:#65418f!important;text-shadow:none!important}
+
+
+/* Slightly deepen light-mode landing typography for stronger contrast. */
+:root:not([data-theme="dark"]) .hero h1,:root:not([data-theme="dark"]) .hero-content{color:#211e26!important}
+:root:not([data-theme="dark"]) .hero h1 em{color:#8e285f!important}
+:root:not([data-theme="dark"]) .hero-copy{color:#332f38!important}
+:root:not([data-theme="dark"]) .hero .eyebrow{color:#58387e!important}
