@@ -604,3 +604,7 @@ body{background:var(--bg);color:var(--text)}
 
 /* Near-black text tokens for readable light-theme copy across the site. */
 :root:not([data-theme="dark"]){color-scheme:light;--text:#242129;--muted:#514b55;--subtle:#6b6570}
+
+
+/* Localized light wash behind landing copy only; keep the remaining artwork clear. */
+:root:not([data-theme="dark"]) .hero-content{background:linear-gradient(90deg,#efebe3e6 0%,#efebe3c9 56%,#efebe366 82%,transparent 100%);text-shadow:none!important}
