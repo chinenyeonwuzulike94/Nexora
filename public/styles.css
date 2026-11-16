@@ -564,3 +564,10 @@ body{background:var(--bg);color:var(--text)}
 /* Keep the theme control aligned with the app header on the error page too. */
 .error-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px}
 .error-head .brand{justify-content:flex-start!important}
+
+
+/* Match local release artwork to its native 205:240 card ratio at every breakpoint. */
+.figma-poster .poster-art{height:auto;aspect-ratio:205/240;background-position:center;background-size:cover}
+/* Keep the theme control aligned with the app header on the error page too. */
+.error-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px}
+.error-head .brand{justify-content:flex-start!important}
