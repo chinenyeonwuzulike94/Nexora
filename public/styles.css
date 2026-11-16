@@ -704,3 +704,8 @@ body{background:var(--bg);color:var(--text)}
 
 /* Final mobile bounds for header and hero metrics. */
 @media(max-width:720px){:root:not([data-theme="dark"]) .top-actions>a{display:none!important}:root:not([data-theme="dark"]) .hero-stats{left:0!important;right:auto!important;width:100vw!important;max-width:100vw!important;margin-left:calc(50% - 50vw)!important;padding:12px 12px!important;box-sizing:border-box;grid-template-columns:repeat(3,minmax(0,1fr))!important;overflow:hidden}:root:not([data-theme="dark"]) .hero-stats .stat{padding-inline:6px;min-width:0}:root:not([data-theme="dark"]) .hero-stats .stat strong{font-size:15px}}
+
+
+/* Final screenshot pass: narrow the desktop wash and clear the mobile portrait faces. */
+@media(min-width:721px){:root:not([data-theme="dark"]) .hero:before{background:linear-gradient(90deg,#efebe3c9 0%,#efebe3b5 18%,#efebe37a 30%,transparent 42%)!important}}
+@media(max-width:720px){.topbar .top-actions>a{display:none!important}.hero-content{transform:translateY(20px)}.hero-stats{left:50%!important;right:auto!important;width:100vw!important;max-width:100vw!important;margin:0!important;transform:translateX(-50%);grid-template-columns:repeat(3,minmax(0,1fr))!important;padding:12px 8px!important;box-sizing:border-box}.hero-stats .stat{min-width:0;padding:2px!important}.hero-stats .stat strong{font-size:15px!important}.hero-stats .stat span{font-size:8px!important;white-space:normal!important}}
