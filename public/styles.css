@@ -586,3 +586,10 @@ body{background:var(--bg);color:var(--text)}
 .hero{box-shadow:none!important;filter:none!important}
 .hero:before,.hero:after{content:none!important;display:none!important;opacity:0!important;background:none!important}
 .hero-video,.hero-image{filter:none!important;box-shadow:none!important}
+
+
+/* Improve light-theme landing copy contrast without darkening the artwork. */
+:root:not([data-theme="dark"]) .hero h1,:root:not([data-theme="dark"]) .hero-content{color:#28242d!important;text-shadow:none!important}
+:root:not([data-theme="dark"]) .hero h1 em{color:#9c2f69!important}
+:root:not([data-theme="dark"]) .hero-copy{color:#403b45!important;text-shadow:none!important}
+:root:not([data-theme="dark"]) .hero .eyebrow{color:#65418f!important;text-shadow:none!important}
