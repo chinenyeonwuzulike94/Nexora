@@ -633,3 +633,8 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .topbar .navlinks a{color:#211e26;font-weight:600;text-shadow:0 0 8px #efebe3}
 :root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
 @media(max-width:720px){:root:not([data-theme="dark"]) .hero-content:before{inset:-26px -18px -24px -18px;background:radial-gradient(ellipse at 35% 50%,#efebe3ed 0%,#efebe3d9 56%,#efebe38c 78%,transparent 100%)}}
+
+
+/* Refine light-mode hero: use a calm horizontal copy fade instead of an oval glow. */
+:root:not([data-theme="dark"]) .hero-content:before{inset:-38px -150px -30px -44px;border-radius:0;background:linear-gradient(90deg,#efebe3f2 0%,#efebe3e8 52%,#efebe3b8 78%,transparent 100%);filter:none}
+@media(max-width:720px){:root:not([data-theme="dark"]) .hero-content:before{inset:-28px -26px -22px -26px;border-radius:0;background:linear-gradient(90deg,#efebe3f0 0%,#efebe3e8 72%,#efebe3ad 100%);filter:none}}
