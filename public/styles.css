@@ -559,3 +559,8 @@ body{background:var(--bg);color:var(--text)}
 /* Home page: remove the movie type badges and card shadows in both color themes. */
 .home-shelf .poster-top{display:none!important}
 .home-feature,.home-shelf .poster-card,.home-shelf .poster-card:hover{box-shadow:none!important}
+
+
+/* Keep the theme control aligned with the app header on the error page too. */
+.error-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px}
+.error-head .brand{justify-content:flex-start!important}
