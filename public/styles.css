@@ -613,3 +613,10 @@ body{background:var(--bg);color:var(--text)}
 /* Keep light-theme navigation legible over the hero artwork without a bar fill. */
 :root:not([data-theme="dark"]) .topbar .navlinks a{color:#242129;text-shadow:0 1px 8px #efebe3}
 :root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
+
+
+/* Light theme navigation contrast over hero artwork, localized to the link row. */
+:root:not([data-theme="dark"]) .topbar .navlinks{position:relative;isolation:isolate}
+:root:not([data-theme="dark"]) .topbar .navlinks:before{content:"";position:absolute;z-index:-1;inset:-14px -18px;border-radius:999px;background:linear-gradient(90deg,transparent 0%,#efebe3d9 12%,#efebe3d9 88%,transparent 100%);filter:blur(7px);pointer-events:none}
+:root:not([data-theme="dark"]) .topbar .navlinks a{color:#211e26;font-weight:600;text-shadow:none}
+:root:not([data-theme="dark"]) .topbar .navlinks a:hover{color:#754bb5}
