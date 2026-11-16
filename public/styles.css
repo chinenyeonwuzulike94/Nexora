@@ -677,3 +677,12 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:1050px){:root:not([data-theme="dark"]) .hero-content{width:min(470px,50vw);margin-left:28px}}
 @media(max-width:720px){:root:not([data-theme="dark"]) .hero:before{background:linear-gradient(0deg,#efebe3e8 0%,#efebe3cf 32%,#efebe363 58%,transparent 82%)!important}:root:not([data-theme="dark"]) .hero-content{align-self:end;width:calc(100vw - 48px);max-width:430px;margin:0 24px 96px;padding:0;background:transparent!important}:root:not([data-theme="dark"]) .hero h1{font-size:clamp(36px,9vw,44px);line-height:1.08}}
 @media(max-width:420px){:root:not([data-theme="dark"]) .topbar{width:calc(100vw - 32px)!important;max-width:none;margin-inline:16px;gap:8px}:root:not([data-theme="dark"]) .brand-logo{width:126px;height:64px}:root:not([data-theme="dark"]) .top-actions{gap:7px;flex:none}:root:not([data-theme="dark"]) .top-actions .button:not(.secondary){min-height:38px;padding-inline:12px;font-size:12px}}
+
+
+/* Tighten the desktop fade so the cast stays crisp beside the copy. */
+:root:not([data-theme="dark"]) .hero:before{background:linear-gradient(90deg,#efebe3df 0%,#efebe3ca 22%,#efebe38a 34%,transparent 47%)!important}
+:root:not([data-theme="dark"]) .hero-content{width:min(420px,39vw);margin-left:clamp(28px,4vw,62px)}
+:root:not([data-theme="dark"]) .hero h1{font-size:clamp(40px,3.3vw,47px)}
+@media(max-width:1050px){:root:not([data-theme="dark"]) .hero-content{width:min(440px,50vw);margin-left:28px}}
+@media(max-width:720px){:root:not([data-theme="dark"]) .hero:before{content:none!important;display:none!important;background:none!important}:root:not([data-theme="dark"]) .hero-content{width:calc(100vw - 32px);max-width:430px;margin:0 16px 96px;padding:18px 18px 20px;background:#efebe3f2!important;border-radius:0}:root:not([data-theme="dark"]) .hero h1{font-size:clamp(34px,8.8vw,40px);line-height:1.02;margin-bottom:10px}:root:not([data-theme="dark"]) .hero-copy{font-size:15px;line-height:1.4;margin-bottom:12px}:root:not([data-theme="dark"]) .hero .eyebrow{margin-bottom:6px}:root:not([data-theme="dark"]) .hero-buttons .button{min-height:40px}}
+@media(max-width:420px){:root:not([data-theme="dark"]) .topbar{width:100vw!important;max-width:none;margin:0;padding-inline:16px;gap:8px;box-sizing:border-box}:root:not([data-theme="dark"]) .brand-logo{width:118px;height:60px}:root:not([data-theme="dark"]) .top-actions{gap:6px;flex:none}:root:not([data-theme="dark"]) .top-actions .button:not(.secondary){min-height:38px;padding-inline:9px;font-size:11px}}
