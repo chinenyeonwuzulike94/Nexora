@@ -663,3 +663,17 @@ body{background:var(--bg);color:var(--text)}
 :root:not([data-theme="dark"]) .topbar .navlinks a{color:#f4eee8!important;text-shadow:0 2px 10px #020c17;font-weight:600}
 @media(max-width:1050px){:root:not([data-theme="dark"]) .hero-content{width:min(470px,52vw);margin-left:24px}}
 @media(max-width:720px){:root:not([data-theme="dark"]) .hero-content{width:calc(100% - 32px);margin:0 16px;padding:24px 20px;background:#efebe3fa;border-radius:4px}:root:not([data-theme="dark"]) .hero h1{font-size:clamp(36px,10vw,46px)}}
+
+
+/* Editorial hero composition: keep faces clear and let the full artwork show through. */
+:root:not([data-theme="dark"]) .hero{isolation:isolate}
+:root:not([data-theme="dark"]) .hero:before{content:""!important;display:block!important;position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,#efebe3cf 0%,#efebe3a8 26%,#efebe35c 44%,transparent 62%)!important;pointer-events:none}
+:root:not([data-theme="dark"]) .hero-content{position:relative;z-index:2;align-self:center;width:min(470px,42vw);margin-left:clamp(28px,4vw,62px);padding:0;background:transparent!important;border-radius:0;color:#211e26!important;text-shadow:none!important}
+:root:not([data-theme="dark"]) .hero h1{font-size:clamp(42px,3.7vw,52px);line-height:1.1;color:#211e26!important}
+:root:not([data-theme="dark"]) .hero h1 em{color:#362c36!important}
+:root:not([data-theme="dark"]) .hero-copy{color:#242129!important}
+:root:not([data-theme="dark"]) .hero .eyebrow{color:#3c3542!important}
+:root:not([data-theme="dark"]) .hero-stats{z-index:2}
+@media(max-width:1050px){:root:not([data-theme="dark"]) .hero-content{width:min(470px,50vw);margin-left:28px}}
+@media(max-width:720px){:root:not([data-theme="dark"]) .hero:before{background:linear-gradient(0deg,#efebe3e8 0%,#efebe3cf 32%,#efebe363 58%,transparent 82%)!important}:root:not([data-theme="dark"]) .hero-content{align-self:end;width:calc(100vw - 48px);max-width:430px;margin:0 24px 96px;padding:0;background:transparent!important}:root:not([data-theme="dark"]) .hero h1{font-size:clamp(36px,9vw,44px);line-height:1.08}}
+@media(max-width:420px){:root:not([data-theme="dark"]) .topbar{width:calc(100vw - 32px)!important;max-width:none;margin-inline:16px;gap:8px}:root:not([data-theme="dark"]) .brand-logo{width:126px;height:64px}:root:not([data-theme="dark"]) .top-actions{gap:7px;flex:none}:root:not([data-theme="dark"]) .top-actions .button:not(.secondary){min-height:38px;padding-inline:12px;font-size:12px}}
