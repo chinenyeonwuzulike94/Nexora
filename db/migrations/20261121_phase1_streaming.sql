@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS nexora_watchlists (
  profile_id TEXT REFERENCES nexora_profiles(id) ON DELETE CASCADE,
  content_id TEXT NOT NULL REFERENCES nexora_content(id) ON DELETE CASCADE,
  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
- PRIMARY KEY(user_id,profile_id,content_id)
+ PRIMARY KEY(user_id,content_id)
 );
 CREATE INDEX IF NOT EXISTS nexora_watchlists_content_idx ON nexora_watchlists(content_id);
 CREATE TABLE IF NOT EXISTS nexora_watch_history (
