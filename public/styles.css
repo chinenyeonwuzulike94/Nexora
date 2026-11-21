@@ -728,3 +728,35 @@ body{background:var(--bg);color:var(--text)}
 
 /* Restore the Figma-style mobile header over the hero artwork. */
 @media(max-width:720px){#app:has(.hero)>.topbar{position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;width:calc(100% - 36px)!important;height:72px!important;padding:0!important;margin:0!important;background:transparent!important;z-index:20!important}#app:has(.hero)>.topbar .top-actions{position:relative!important;inset:auto!important;display:flex!important;align-items:center;justify-content:flex-end;margin-left:auto!important;flex:none!important}#app:has(.hero)>.topbar .theme-toggle{position:relative!important;inset:auto!important;display:grid!important;flex:none!important}#app:has(.hero)>.topbar .top-actions>a{display:none!important}.hero{min-height:calc(100svh + 72px)!important}}
+
+/* Refined warm light palette: Nexora violet, rose and gold on soft paper neutrals. */
+:root:not([data-theme="dark"]){
+ color-scheme:light;--bg:#f3f0ea;--panel:#faf7f1;--card:#fcfaf6;--card2:#eae5de;
+ --line:#d9d2c8;--text:#2d2933;--muted:#625d68;--subtle:#827d87;
+ --primary:#754bb5;--accent:#a63e69;--star:#775315;
+ --selection:#754bb5;--selection-soft:#e9e1f2;--selection-border:#b59acf;
+ --shadow:0 18px 48px #39333c14;
+}
+:root:not([data-theme="dark"]) .poster-card[aria-selected="true"],
+:root:not([data-theme="dark"]) .poster-card.is-selected,
+:root:not([data-theme="dark"]) .poster-card.selected,
+:root:not([data-theme="dark"]) .poster-card:has(.watch-add.saved){
+ border-color:var(--selection);background:var(--selection-soft);
+ outline:2px solid color-mix(in srgb,var(--selection) 24%,transparent);
+ outline-offset:2px;box-shadow:none;
+}
+:root:not([data-theme="dark"]) .poster-card[aria-selected="true"] .poster-info,
+:root:not([data-theme="dark"]) .poster-card.is-selected .poster-info,
+:root:not([data-theme="dark"]) .poster-card.selected .poster-info,
+:root:not([data-theme="dark"]) .poster-card:has(.watch-add.saved) .poster-info{background:var(--selection-soft)}
+:root:not([data-theme="dark"]) .poster-card:focus-visible{outline:2px solid var(--selection);outline-offset:3px}
+:root[data-theme="dark"] .poster-card[aria-selected="true"],
+:root[data-theme="dark"] .poster-card.is-selected,
+:root[data-theme="dark"] .poster-card.selected,
+:root[data-theme="dark"] .poster-card:has(.watch-add.saved){
+ border-color:#a784d2;background:#302b3a;outline:2px solid #a784d255;outline-offset:2px;box-shadow:none;
+}
+:root[data-theme="dark"] .poster-card[aria-selected="true"] .poster-info,
+:root[data-theme="dark"] .poster-card.is-selected .poster-info,
+:root[data-theme="dark"] .poster-card.selected .poster-info,
+:root[data-theme="dark"] .poster-card:has(.watch-add.saved) .poster-info{background:#302b3a}
