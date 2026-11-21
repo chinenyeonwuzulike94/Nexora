@@ -35,6 +35,7 @@
     }
   ],
   "rewrites": [
+    {"source":"/admin","destination":"/index.html"},
     {
       "source": "/plans",
       "destination": "/index.html"
