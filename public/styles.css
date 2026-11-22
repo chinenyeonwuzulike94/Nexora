@@ -760,3 +760,29 @@ body{background:var(--bg);color:var(--text)}
 :root[data-theme="dark"] .poster-card.is-selected .poster-info,
 :root[data-theme="dark"] .poster-card.selected .poster-info,
 :root[data-theme="dark"] .poster-card:has(.watch-add.saved) .poster-info{background:#302b3a}
+
+/* Complete mobile navigation and make every movie card's trailer action visible. */
+.mobile-menu-toggle{display:none;align-items:center;justify-content:center;width:40px;height:40px;flex:0 0 40px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);cursor:pointer}
+.mobile-menu-toggle svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.mobile-menu-panel[hidden],.mobile-nav-more-panel[hidden]{display:none!important}
+.mobile-menu-panel{position:absolute;z-index:80;top:calc(100% + 8px);left:12px;right:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);box-shadow:0 18px 44px #0003}
+.mobile-menu-panel a{display:flex;align-items:center;gap:10px;padding:11px 10px;border-radius:9px;color:inherit;font-size:13px}
+.mobile-menu-panel a:hover{background:var(--card2);color:var(--primary)}
+.mobile-menu-panel .nav-svg{width:18px;height:18px;flex:0 0 18px}
+.mobile-nav{position:fixed}
+.mobile-nav-more{display:grid;justify-items:center;align-content:center;gap:2px;border:0;background:transparent;color:inherit;font:inherit;font-size:9px;cursor:pointer}
+.mobile-nav-more-panel{position:absolute;right:10px;bottom:calc(100% + 9px);display:grid;grid-template-columns:repeat(2,minmax(118px,1fr));gap:4px;min-width:250px;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text);box-shadow:0 16px 40px #0003}
+.mobile-nav-more-panel a{display:flex!important;justify-content:flex-start!important;align-items:center;gap:8px;padding:10px;border-radius:9px;color:inherit!important;font-size:12px!important}
+.mobile-nav-more-panel a:hover{background:var(--card2)}
+.mobile-nav-more-panel .nav-svg{width:18px;height:18px;flex:0 0 18px}
+.poster-trailer{position:absolute;z-index:2;left:50%;top:50%;display:grid;place-items:center;width:48px;height:48px;transform:translate(-50%,-50%);border:1px solid #ffffffa8;border-radius:50%;background:#201829b8;color:#fff;font-size:18px;cursor:pointer;opacity:0;transition:opacity .18s,transform .18s}
+.poster-card:hover .poster-trailer,.poster-card:focus-within .poster-trailer{opacity:1}
+.poster-trailer:hover{transform:translate(-50%,-50%) scale(1.08);background:var(--primary)}
+@media(max-width:720px){
+ .topbar,.app-topbar{position:relative}
+ .mobile-menu-toggle{display:grid}
+ .mobile-menu-panel{top:calc(100% + 3px)}
+ .mobile-nav{grid-template-columns:repeat(5,minmax(0,1fr));}
+ .mobile-nav-more{font-size:9px}
+ .poster-trailer{opacity:1;width:40px;height:40px}
+}
