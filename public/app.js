@@ -76,7 +76,10 @@ function setTheme(mode){const theme=mode==="dark"?"dark":"light";document.docume
 function initializeTheme(){let saved="light";try{saved=localStorage.getItem("nexora-theme")||"light"}catch{};setTheme(saved)}
 function bindCommon(){
   setTheme(document.documentElement.dataset.theme||"light");
-  $$('[data-theme-toggle]').forEach(button=>button.addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')));
+  $('[data-theme-toggle]').forEach(button=>button.addEventListener('click',()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')));
+  $('[data-mobile-menu-toggle]').forEach(button=>button.addEventListener('click',()=>{const menu=button.parentElement.querySelector('[data-mobile-menu]');if(!menu)return;const open=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');menu.hidden=!open}));
+  $('[data-mobile-more-toggle]').forEach(button=>button.addEventListener('click',()=>{const menu=button.parentElement.querySelector('[data-mobile-more]');if(!menu)return;const open=button.getAttribute('aria-expanded')!=='true';button.setAttribute('aria-expanded',String(open));menu.hidden=!open}));
+
   $$('[data-form="newsletter"]').forEach(f=>f.addEventListener('submit',async e=>{e.preventDefault();const out=$('.form-feedback',f.parentElement);try{const r=await api('/api/newsletter',{method:'POST',body:JSON.stringify(Object.fromEntries(new FormData(f)))});out.className='form-feedback success';out.textContent=r.message;f.reset()}catch(err){out.className='form-feedback error';out.textContent=err.message}}));
   $$('[data-form="testimonial"]').forEach(f=>f.addEventListener('submit',async e=>{e.preventDefault();const out=$('.form-feedback',f);try{const r=await api('/api/testimonials',{method:'POST',body:JSON.stringify(Object.fromEntries(new FormData(f)))});out.className='form-feedback success';out.textContent=r.message;f.reset()}catch(err){out.className='form-feedback error';out.textContent=err.message}}));
   $$('[data-form="search"]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const q=new FormData(f).get('q');location.href='/app/discover'+(q?'?q='+encodeURIComponent(q):'')}));
