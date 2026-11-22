@@ -13,11 +13,12 @@ Nexora is an independent, responsive movie and series discovery and streaming MV
 ## Run locally
 
 1. Install Node.js 20 or later.
-2. Copy `.env.example` to `.env` and set `DATABASE_URL` if you want to exercise Neon-backed features. Never commit secrets.
-3. Run `npm start`.
-4. Open `http://localhost:4173`.
+2. Copy `.env.example` to `.env` and set `DATABASE_URL` if you want Neon-backed features. Never commit real credentials.
+3. Apply [`migrations/001_phase1_schema.sql`](migrations/001_phase1_schema.sql) to the intended Neon database before using profiles, watch history, catalogue administration or licensing. The app automatically creates the user and session tables; the migration supplies the remaining Phase 1 tables.
+4. Run `npm start`.
+5. Open `http://localhost:4173`.
 
-For the Neon-backed paths, apply `lib/schema.sql` to the database before use. Without Neon, the app can start in demo mode, but persistent accounts, profiles, rights administration and watch history are unavailable or temporary.
+Without Neon, the app can start in demo mode, but persistent accounts, profiles, rights administration and watch history are unavailable or temporary.
 
 ## Main pages
 
