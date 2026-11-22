@@ -786,3 +786,5 @@ body{background:var(--bg);color:var(--text)}
  .mobile-nav-more{font-size:9px}
  .poster-trailer{opacity:1;width:40px;height:40px}
 }
+
+.rights-entry{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-block:8px;border-bottom:1px solid var(--line)}.rights-entry:last-child{border-bottom:0}.rights-entry .button{min-height:34px;padding-inline:12px;font-size:12px}
