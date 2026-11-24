@@ -13,7 +13,7 @@ Base path: `/api`. Responses use JSON unless a route streams a media asset. Muta
 | GET | `/api/content/{id}/playback` | Return playable assets only when active demo playback rights cover the detected territory and a ready open-film asset exists. |
 | GET | `/api/playback?id={id}` | Compatibility route for the playback endpoint. |
 
-The server uses Vercel's `x-vercel-ip-country` country header when present and defaults to `NG` locally. The browser must still obey the title's own licensing terms; an API response is not a substitute for the licence.
+The server uses Vercel's `x-vercel-ip-country` country header when present and defaults to `NG` locally. The browser must still obey the title's own licensing terms; an API response is not a substitute for the licence. The open-film player seed and its authorised assets are installed by `migrations/003_streaming_extensions.sql` after migrations 001 and 002.
 
 ## Authentication and profiles
 
@@ -68,7 +68,8 @@ All routes below require an authenticated account with the appropriate role stor
 | GET | `/api/admin/content` | Admin, catalogue editor, rights manager | List catalogue records and their rights. |
 | POST | `/api/admin/content` | Admin, catalogue editor | Create a draft movie or series record; optional poster URLs are restricted to approved HTTPS hosts. |
 | POST | `/api/admin/content?action=rights&id={id}` | Admin, rights manager | Add a pending rights record with territory, agreement reference, dates and SVOD/AVOD flags. |
-| POST | `/api/admin/content?action=rights-review&id={id}` | Admin, rights manager | Activate an eligible pending licence or revoke active rights using `{ "rightId", "status" }`. |
+| POST | `/api/admin/content?action=rights-review&id={id}` | Admin, rights manager | Activate an eligible pending licence or revoke active rights using `{ "rightId", "status" }`. Optional review notes are limited to 500 characters. Each successful review records an audit event atomically with the status change. |
+| GET | `/api/admin/content/{id}/rights-history?rightId={rightId}` | Admin, rights manager | Read up to 200 newest rights-review audit events for a title, optionally narrowed to one licence. |
 | POST | `/api/admin/content?action=publish&id={id}` | Admin, catalogue editor | Publish only when active rights and a ready playback asset exist. |
 
 ## Error behavior and security

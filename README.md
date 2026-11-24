@@ -10,11 +10,13 @@ Nexora is an independent, responsive movie and series discovery and streaming MV
 - **Hosting:** Vercel. Production must use persistent storage; the Vercel `/tmp` demo JSON store is temporary and instance-local.
 - **Dependencies:** Node.js and `@neondatabase/serverless` (declared in `package.json`).
 
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for system boundaries, data flow, migration sequence, and the current phase scope.
+
 ## Run locally
 
 1. Install Node.js 20 or later.
 2. Copy `.env.example` to `.env` and set `DATABASE_URL` if you want Neon-backed features. Never commit real credentials.
-3. Apply [`migrations/001_phase1_schema.sql`](migrations/001_phase1_schema.sql) to the intended Neon database before using profiles, watch history, catalogue administration or licensing. The app automatically creates the user and session tables; the migration supplies the remaining Phase 1 tables.
+3. Apply [`migrations/001_phase1_schema.sql`](migrations/001_phase1_schema.sql), [`migrations/002_rights_audit.sql`](migrations/002_rights_audit.sql), and [`migrations/003_streaming_extensions.sql`](migrations/003_streaming_extensions.sql) in order to the intended Neon database before using profiles, watch history, catalogue administration, licensing, or the open-film player. The app automatically creates the user and session tables; the migrations supply the remaining Phase 1 tables, rights-review history, and authorised demo asset.
 4. Run `npm start`.
 5. Open `http://localhost:4173`.
 
