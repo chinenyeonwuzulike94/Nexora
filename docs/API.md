@@ -7,7 +7,7 @@ Base path: `/api`. Responses use JSON unless a route streams a media asset. Muta
 | Method | Path | Behavior |
 |---|---|---|
 | GET | `/api/health` | Health status and seeded catalogue count. |
-| GET | `/api/movies?q=&genre=&type=&sort=` | Search and filter the seeded catalogue plus published, rights-cleared database titles for the request territory. `sort=rating` sorts by rating. |
+| GET | `/api/movies?q=&genre=&type=&year=&language=&country=&sort=` | Search and filter the seeded catalogue plus published, rights-cleared database titles for the request territory. Genres may be comma-separated; `Sci-Fi` and `Science Fiction` match each other. `sort=rating`, `sort=year`, and `sort=recently-added` use available rating, release-year, and catalogue-created metadata. |
 | GET | `/api/movie?id={id}` | Compatibility route for one movie; delegates to the movie detail route. |
 | GET | `/api/movies/{id}` | Return one seeded title or a published database title currently licensed in the request territory. Series responses include ordered seasons and episode metadata. |
 | GET | `/api/content/{id}/playback` | Return playable assets only when active demo playback rights cover the detected territory and a ready open-film asset exists. |

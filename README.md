@@ -29,7 +29,7 @@ Without Neon, the app can start in demo mode, but persistent accounts, profiles,
 - `/plans` — Free, Plus and Family plan preview. USD amounts are illustrative and checkout is disabled.
 - `/testimonials` — viewer stories and a submission form; submissions await moderation.
 - `/app` — discovery home.
-- `/app/discover`, `/app/trending`, `/app/top-rated`, `/app/genres`, `/app/watchlist` — catalogue views and saved titles.
+- `/app/discover`, `/app/trending`, `/app/top-rated`, `/app/genres`, `/app/watchlist`, `/app/history` — catalogue discovery, saved titles, and account watch history.
 - `/app/movie/{id}` and `/app/series/{id}` — dedicated movie and series details; series pages include an episode guide when metadata is available.
 - `/app/player/demo` — the openly licensed Big Buck Bunny playback demonstration, subject to the licence attribution shown on the page and territory check.
 - `/app/account` — account and viewer-profile management.
