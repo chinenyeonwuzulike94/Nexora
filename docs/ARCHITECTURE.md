@@ -10,7 +10,7 @@ The project stays a modular monolith. The existing static HTML, CSS, and browser
 
 | System | Phase 1 responsibility | Later work |
 | --- | --- | --- |
-| Streaming | Catalogue discovery, movie and series details, profiles, watchlists, watch progress, territory checks, rights dates, and the open-film player | Licensed adaptive playback, signed media delivery, richer recommendations, episodes and resume/next-episode flows |
+| Streaming | Catalogue discovery, movie and series details, season and episode guides, profiles, watchlists, watch progress, territory checks, rights dates, and the open-film player | Licensed adaptive playback, signed media delivery, richer recommendations, episodes and resume/next-episode flows |
 | Creator | Shared user accounts and permission model only | Creator profiles, uploads, Shorts, follows, comments, moderation and Creator Studio (Phase 2) |
 | Business | Illustrative plan preview, staff roles, draft catalogue management, licence review, publication gates, and rights audit history | Hosted subscription billing, advertising, creator earnings and business analytics (Phase 3) |
 

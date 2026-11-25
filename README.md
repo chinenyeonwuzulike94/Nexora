@@ -19,6 +19,7 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for system boundaries, data f
 3. Apply [`migrations/001_phase1_schema.sql`](migrations/001_phase1_schema.sql), [`migrations/002_rights_audit.sql`](migrations/002_rights_audit.sql), and [`migrations/003_streaming_extensions.sql`](migrations/003_streaming_extensions.sql) in order to the intended Neon database before using profiles, watch history, catalogue administration, licensing, or the open-film player. The app automatically creates the user and session tables; the migrations supply the remaining Phase 1 tables, rights-review history, and authorised demo asset.
 4. Run `npm start`.
 5. Open `http://localhost:4173`.
+6. Run `npm test` for the automated test suite.
 
 Without Neon, the app can start in demo mode, but persistent accounts, profiles, rights administration and watch history are unavailable or temporary.
 
@@ -29,7 +30,7 @@ Without Neon, the app can start in demo mode, but persistent accounts, profiles,
 - `/testimonials` — viewer stories and a submission form; submissions await moderation.
 - `/app` — discovery home.
 - `/app/discover`, `/app/trending`, `/app/top-rated`, `/app/genres`, `/app/watchlist` — catalogue views and saved titles.
-- `/app/movie/{id}` — title details and trailer/play entry points.
+- `/app/movie/{id}` and `/app/series/{id}` — dedicated movie and series details; series pages include an episode guide when metadata is available.
 - `/app/player/demo` — the openly licensed Big Buck Bunny playback demonstration, subject to the licence attribution shown on the page and territory check.
 - `/app/account` — account and viewer-profile management.
 - `/signin`, `/signup`, `/forgot-password` — account flows.

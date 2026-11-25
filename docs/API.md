@@ -9,7 +9,7 @@ Base path: `/api`. Responses use JSON unless a route streams a media asset. Muta
 | GET | `/api/health` | Health status and seeded catalogue count. |
 | GET | `/api/movies?q=&genre=&type=&sort=` | Search and filter the seeded catalogue plus published, rights-cleared database titles for the request territory. `sort=rating` sorts by rating. |
 | GET | `/api/movie?id={id}` | Compatibility route for one movie; delegates to the movie detail route. |
-| GET | `/api/movies/{id}` | Return one seeded title or a published database title currently licensed in the request territory. |
+| GET | `/api/movies/{id}` | Return one seeded title or a published database title currently licensed in the request territory. Series responses include ordered seasons and episode metadata. |
 | GET | `/api/content/{id}/playback` | Return playable assets only when active demo playback rights cover the detected territory and a ready open-film asset exists. |
 | GET | `/api/playback?id={id}` | Compatibility route for the playback endpoint. |
 
@@ -67,6 +67,8 @@ All routes below require an authenticated account with the appropriate role stor
 |---|---|---|---|
 | GET | `/api/admin/content` | Admin, catalogue editor, rights manager | List catalogue records and their rights. |
 | POST | `/api/admin/content` | Admin, catalogue editor | Create a draft movie or series record; optional poster URLs are restricted to approved HTTPS hosts. |
+| POST | `/api/admin/content/{id}/seasons` | Admin, catalogue editor | Add a season to a series with `{ "seasonNumber", "title", "synopsis" }`; season numbers cannot repeat within a series. |
+| POST | `/api/admin/content/{id}/seasons/{seasonId}/episodes` | Admin, catalogue editor | Add an episode with `{ "episodeNumber", "title", "synopsis", "runtimeSeconds" }`; episode numbers cannot repeat within a season. |
 | POST | `/api/admin/content?action=rights&id={id}` | Admin, rights manager | Add a pending rights record with territory, agreement reference, dates and SVOD/AVOD flags. |
 | POST | `/api/admin/content?action=rights-review&id={id}` | Admin, rights manager | Activate an eligible pending licence or revoke active rights using `{ "rightId", "status" }`. Optional review notes are limited to 500 characters. Each successful review records an audit event atomically with the status change. |
 | GET | `/api/admin/content/{id}/rights-history?rightId={rightId}` | Admin, rights manager | Read up to 200 newest rights-review audit events for a title, optionally narrowed to one licence. |

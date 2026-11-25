@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node lib/server.mjs",
-    "dev": "node --watch lib/server.mjs"
+    "dev": "node --watch lib/server.mjs",
+    "test": "node --test"
   },
   "dependencies": {
     "@neondatabase/serverless": "1.2.1"
