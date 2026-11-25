@@ -454,8 +454,8 @@ body{background:var(--bg);color:var(--text)}
 #app:has(.hero) .section-head .kicker,#app:has(.hero) .cta-panel>.eyebrow{font-size:14px;line-height:1.25;letter-spacing:.12em;font-weight:700}
 @media(max-width:720px){#app:has(.hero) .section-head .kicker,#app:has(.hero) .cta-panel>.eyebrow{font-size:12px;letter-spacing:.11em}}
 /* Use the bundled Odyssey artwork so the home spotlight does not depend on a remote image host. */
-.feature-art{background-image:linear-gradient(0deg,#100d13b8,transparent 68%),url('/assets/home-feature-art.jpg')!important;background-size:cover,cover!important;background-position:center,center 42%!important}
-@media(max-width:720px){.feature-art{min-height:360px;background-position:center,center 35%!important}}
+#app:has(.hero) .feature-art,.feature-art.odyssey-detail-art{background-image:linear-gradient(0deg,#100d13b8,transparent 68%),url('/assets/home-feature-art.jpg')!important;background-size:cover,cover!important;background-position:center,center 42%!important}
+@media(max-width:720px){#app:has(.hero) .feature-art,.feature-art.odyssey-detail-art{min-height:360px;background-position:center,center 35%!important}}
 
 /* Simple branded loading indicator shown while Nexora renders. */
 .boot{min-height:100svh;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;color:var(--muted);letter-spacing:.02em;font-size:13px}
