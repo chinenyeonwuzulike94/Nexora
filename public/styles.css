@@ -821,3 +821,8 @@ body{background:var(--bg);color:var(--text)}
 @media(max-width:560px){.catalogue-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.catalogue-filters .select{width:100%;min-width:0;height:42px}.filterbar{align-items:stretch}.filterbar .tabs{width:100%}.filterbar .tab{flex:1;text-align:center;padding:0 8px}.home-shelf{margin-bottom:28px}}
 
 .history-card{min-width:0}.watch-progress{height:3px;margin:5px 2px 0;background:var(--line);border-radius:9px;overflow:hidden}.watch-progress span{display:block;height:100%;background:var(--accent);border-radius:inherit}
+
+.homepage-order-list{list-style:none;padding:0;margin:18px 0;display:grid;gap:8px;max-width:720px}
+.homepage-order-list li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--text)}
+.homepage-order-controls{display:flex;gap:7px;flex:none}.homepage-order-controls button{min-width:38px}.homepage-order-controls button:disabled{opacity:.4;cursor:not-allowed}
+.homepage-order-manager{margin:0 0 34px}

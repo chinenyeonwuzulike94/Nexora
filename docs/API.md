@@ -7,6 +7,8 @@ Base path: `/api`. Responses use JSON unless a route streams a media asset. Muta
 | Method | Path | Behavior |
 |---|---|---|
 | GET | `/api/health` | Health status and seeded catalogue count. |
+| GET | `/api/home-sections` | Return the saved homepage order, or the default order when persistent storage is unavailable. Empty sections remain hidden. |
+| POST | `/api/admin/home-sections` | Admin or catalogue editor only. Save a complete reordered list of all available Phase 1 homepage section keys. |
 | GET | `/api/movies?q=&genre=&type=&year=&language=&country=&sort=` | Search and filter the seeded catalogue plus published, rights-cleared database titles for the request territory. Genres may be comma-separated; `Sci-Fi` and `Science Fiction` match each other. `sort=rating`, `sort=year`, and `sort=recently-added` use available rating, release-year, and catalogue-created metadata. |
 | GET | `/api/movie?id={id}` | Compatibility route for one movie; delegates to the movie detail route. |
 | GET | `/api/movies/{id}` | Return one seeded title or a published database title currently licensed in the request territory. Series responses include ordered seasons and episode metadata. |
