@@ -66,7 +66,7 @@ All routes below require an authenticated account with the appropriate role stor
 | Method | Path | Role | Behavior |
 |---|---|---|---|
 | GET | `/api/admin/content` | Admin, catalogue editor, rights manager | List catalogue records and their rights. |
-| POST | `/api/admin/content` | Admin, catalogue editor | Create a draft movie or series record; optional poster URLs are restricted to approved HTTPS hosts. |
+| POST | `/api/admin/content` | Admin, catalogue editor | Create a draft movie or series record with up to 10 comma-separated genres, ISO language and production-country codes, synopsis, release year, and an optional poster URL restricted to approved HTTPS hosts. |
 | POST | `/api/admin/content/{id}/seasons` | Admin, catalogue editor | Add a season to a series with `{ "seasonNumber", "title", "synopsis" }`; season numbers cannot repeat within a series. |
 | POST | `/api/admin/content/{id}/seasons/{seasonId}/episodes` | Admin, catalogue editor | Add an episode with `{ "episodeNumber", "title", "synopsis", "runtimeSeconds" }`; episode numbers cannot repeat within a season. |
 | POST | `/api/admin/content?action=rights&id={id}` | Admin, rights manager | Add a pending rights record with territory, agreement reference, dates and SVOD/AVOD flags. |
